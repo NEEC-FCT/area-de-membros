@@ -81,12 +81,48 @@ function ip_info($ip = NULL, $purpose = "location", $deep_detect = TRUE) {
 
 
 if (strcmp( ip_info("Visitor", "Country") ,  "Portugal") !== 0) {
-    echo 'Bloquear!!!';
+    
+    $to      = 'joao.veloso@neec-fct.com';
+    $subject = 'Detectado fora de Portugal em ' . $_SESSION['login'];
+    $message = 'hello';
+    $headers = 'From: geral@neec-fct.com' . "\r\n" .
+        'Reply-To: geral@neec-fct.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+    mail($to, $subject, $message, $headers);
+
+    unset($_SESSION['login']);
+    unset($_SESSION['senha']);
+    unset($_SESSION['nivel']);
+    header("Location: https://neec-fct.com/");
+    die();
 }
 
 
 
+  $adicional = "";
+
+  if( strpos( $_SESSION['nivel'] , 'Admin') !== false ){
+      $adicional = '   <li>
+                    <a href="contact.php">
+                        <i class="fas fa-phone"></i>
+                        <p>Contactos de empresas</p>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a href="/Panel/PHP/porta.php">
+                        <i class="fas fa-door-open"></i>
+                        <p>Abrir Porta</p>
+                    </a>
+                </li>';
+  }
+ 
+
 echo '   
+
+
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
@@ -128,20 +164,7 @@ echo '
                 
                 
                 
-                <li>
-                    <a href="contact.php">
-                        <i class="fas fa-phone"></i>
-                        <p>Contactos de empresas</p>
-                    </a>
-                </li>
-                
-                
-                <li>
-                    <a href="/Panel/PHP/porta.php">
-                        <i class="fas fa-door-open"></i>
-                        <p>Abrir Porta</p>
-                    </a>
-                </li>
+             ' . $adicional. '
                 
                 
                 <li>
