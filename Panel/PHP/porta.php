@@ -10,17 +10,11 @@ if ( ! isset($_SESSION['login'] ) || ! isset( $_SESSION['senha'] ) || ! isset($_
 }
 else{
     
-        
-        if( strpos( $_SESSION['nivel'] , 'admin') !== false ){
+    
+
+        if( strpos( $_SESSION['nivel'] , 'Admin') !== false ){
             
-             echo "<script>
-            alert('Só a direcção pode abrir a porta');
-            window.location.href='/Panel';
-            </script>";    
-            
-        }
-        
-        else{
+              
                 $mysqli = new mysqli(SERVER-URL, DB-USERNAME, DB-PASSWORD , SERVER-DB);
         
                 if (mysqli_connect_errno()) {
@@ -49,6 +43,19 @@ else{
             alert('Porta vai abrir Brevemente');
             window.location.href='/Panel';
             </script>";    
+               
+            
+        }
+        
+        else{
+            
+            
+            echo "<script>
+            alert('Só a direcção pode abrir a porta');
+            window.location.href='/Panel';
+            </script>";  
+            
+          
         }
 
 
