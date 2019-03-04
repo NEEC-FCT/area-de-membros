@@ -242,6 +242,7 @@ function copyStringToClipboard (str) {
                             } 
                             
                             $sql = 'SELECT nome , funcao , numTele ,email , nroAluno , dataEntrada  FROM `users` WHERE  funcao not LIKE  "%Allumini%" AND funcao  LIKE "%Junior%"  AND funcao  LIKE "%Senior%"  ORDER BY nome ASC';
+                            $sql = 'SELECT nome , funcao , numTele ,email , nroAluno , dataEntrada  FROM `users` WHERE  funcao not LIKE  "%Allumini%" AND funcao  LIKE "%Junior%"  or funcao  LIKE "%Senior%"  ORDER BY nome ASC';
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
