@@ -144,7 +144,6 @@ function copyStringToClipboard (str) {
                                 die("Connection failed: " . $conn->connect_error);
                             } 
                             
-                            $sql = 'SELECT nome , funcao , numTele ,email , nroAluno , dataEntrada  FROM `users` WHERE funcao not LIKE  "%Allumini%" AND funcao NOT LIKE "%Junior%"  AND funcao NOT LIKE "%Senior%" ORDER BY nome ASC';
                             $sql = 'SELECT nome , funcao , numTele ,email , nroAluno , dataEntrada  FROM `users` WHERE funcao not LIKE  "%Allumini%" AND funcao NOT LIKE "%Junior%"  AND funcao NOT LIKE "%Senior%" and aprovado = 1 ORDER BY nome ASC';
                             $result = $conn->query($sql);
                             
