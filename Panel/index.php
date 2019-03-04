@@ -145,6 +145,7 @@ function copyStringToClipboard (str) {
                             } 
                             
                             $sql = 'SELECT nome , funcao , numTele ,email , nroAluno , dataEntrada  FROM `users` WHERE funcao not LIKE  "%Allumini%" AND funcao NOT LIKE "%Junior%"  AND funcao NOT LIKE "%Senior%" ORDER BY nome ASC';
+                            $sql = 'SELECT nome , funcao , numTele ,email , nroAluno , dataEntrada  FROM `users` WHERE funcao not LIKE  "%Allumini%" AND funcao NOT LIKE "%Junior%"  AND funcao NOT LIKE "%Senior%" and aprovado = 1 ORDER BY nome ASC';
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
@@ -198,7 +199,7 @@ function copyStringToClipboard (str) {
                                 die("Connection failed: " . $conn->connect_error);
                             } 
                             
-                            $sql = 'SELECT email  FROM `users` WHERE  funcao not LIKE  "%Allumini%" ';
+                            $sql = 'SELECT email  FROM `users` WHERE  funcao not LIKE  "%Allumini%"  and aprovado = 1 ';
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
@@ -241,8 +242,7 @@ function copyStringToClipboard (str) {
                                 die("Connection failed: " . $conn->connect_error);
                             } 
                             
-                            $sql = 'SELECT nome , funcao , numTele ,email , nroAluno , dataEntrada  FROM `users` WHERE  funcao not LIKE  "%Allumini%" AND funcao  LIKE "%Junior%"  AND funcao  LIKE "%Senior%"  ORDER BY nome ASC';
-                            $sql = 'SELECT nome , funcao , numTele ,email , nroAluno , dataEntrada  FROM `users` WHERE  funcao not LIKE  "%Allumini%" AND funcao  LIKE "%Junior%"  or funcao  LIKE "%Senior%"  ORDER BY nome ASC';
+                            $sql = 'SELECT nome , funcao , numTele ,email , nroAluno , dataEntrada  FROM `users` WHERE  funcao not LIKE  "%Allumini%" AND funcao  LIKE "%Junior%"  or funcao  LIKE "%Senior%" and aprovado = 1  ORDER BY nome ASC';
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
@@ -311,7 +311,7 @@ function copyStringToClipboard (str) {
                                 die("Connection failed: " . $conn->connect_error);
                             } 
                             
-                            $sql = 'SELECT nome , funcao , numTele ,email , nroAluno , dataEntrada  FROM `users` WHERE  funcao  LIKE  "%Allumini%"   ORDER BY nome ASC';
+                            $sql = 'SELECT nome , funcao , numTele ,email , nroAluno , dataEntrada  FROM `users` WHERE  funcao  LIKE  "%Allumini%" and aprovado = 1 ORDER BY nome ASC';
                             $result = $conn->query($sql);
                             
                             if ($result->num_rows > 0) {
