@@ -1,3 +1,32 @@
+<?php
+
+
+session_start();
+
+echo $_SESSION['nivel'];
+if( !(strpos( $_SESSION['nivel'] , 'Admin') !== false ) ){
+    //Bloquear
+   $to      = 'joao.veloso@neec-fct.com';
+    $subject = 'Detectado fora de Portugal em ' . $_SESSION['login'];
+    $message = 'Detectado';
+    $headers = 'From: geral@neec-fct.com' . "\r\n" .
+        'Reply-To: geral@neec-fct.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+    mail($to, $subject, $message, $headers);
+
+    unset($_SESSION['login']);
+    unset($_SESSION['senha']);
+    unset($_SESSION['nivel']);
+    header("Location: https://neec-fct.com/");
+    die();
+}
+
+
+?>
+
+
+
 <!doctype html>
 <html lang="en">
 <head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
