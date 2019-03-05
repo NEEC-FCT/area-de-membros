@@ -8,6 +8,12 @@
 	$numero = filter_var($_POST["numero"], FILTER_SANITIZE_STRING);
     $telemovel= filter_var($_POST["cellphone"], FILTER_SANITIZE_STRING);
 	
+    if( empty($_POST["email"]) || empty($_POST["name"]) ||  empty($_POST["pass"]) || empty($_POST["numero"]) || empty($_POST["cellphone"])){
+        header("Location: https://membros.neec-fct.com/register.html");
+        die();
+	
+    }
+	
     $password = password_hash($password, PASSWORD_DEFAULT); 
 	
 	
